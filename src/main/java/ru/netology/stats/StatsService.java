@@ -26,14 +26,13 @@ public class StatsService {
         }
         return minMonth + 1;
 
-
     }
 
-    public long calculateSum(long[] purchases) {
+    public long calculateSum(long[] sales) {
         long sum = 0;
-        for (long purchase : purchases) {
+        for (long monthSale : sales) {
             // аналог sum = sum + purchase;
-            sum = sum + purchase;
+            sum = sum + monthSale;
         }
         return sum;
     }
@@ -45,10 +44,6 @@ public class StatsService {
 
     public long belowAverageSales(long[] sales) {
         long monthsAmount = 0;
-        long sum = 0;
-        for (long monthSale : sales) {
-            sum += monthSale;
-        }
         for (long monthSale : sales) {
             if (monthSale < mediumSum(sales)) {
                 monthsAmount += 1;
@@ -59,11 +54,6 @@ public class StatsService {
 
     public long aboveAverageSales(long[] sales) {
         long monthsAmount = 0;
-        long sum = 0;
-        for (long monthSale : sales) {
-            sum += monthSale;
-        }
-
         for (long monthSale : sales) {
             if (monthSale > mediumSum(sales)) {
                 monthsAmount += 1;
