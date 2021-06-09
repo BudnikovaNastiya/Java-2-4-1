@@ -38,14 +38,23 @@ public class StatsService {
     }
 
     public long mediumSum(long[] sales) {
-        long averageSale = calculateSum(sales) / sales.length;
+        long sum = 0;
+        for (long monthSale : sales) {
+            sum = sum + monthSale;
+        }
+        long averageSale = sum / sales.length;
         return averageSale;
     }
 
     public long belowAverageSales(long[] sales) {
         long monthsAmount = 0;
+        long sum = 0;
         for (long monthSale : sales) {
-            if (monthSale < mediumSum(sales)) {
+            sum = sum + monthSale;
+        }
+        long mediumSum = sum / sales.length;
+        for (long monthSale : sales) {
+            if (monthSale < mediumSum) {
                 monthsAmount += 1;
             }
         }
@@ -54,8 +63,13 @@ public class StatsService {
 
     public long aboveAverageSales(long[] sales) {
         long monthsAmount = 0;
+        long sum = 0;
         for (long monthSale : sales) {
-            if (monthSale > mediumSum(sales)) {
+            sum = sum + monthSale;
+        }
+        long mediumSum = sum / sales.length;
+        for (long monthSale : sales) {
+            if (monthSale > mediumSum) {
                 monthsAmount += 1;
             }
         }
